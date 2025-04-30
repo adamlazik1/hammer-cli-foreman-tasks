@@ -10,7 +10,9 @@ module HammerCLIForemanTasks
 
     module ActionField
       def extend_data(task)
-        task["action"] = [task["humanized"]["action"], task["humanized"]["input"]].join(' ')
+        if task["humanized"]["input"].is_a?(String)
+          task["action"] = [task["humanized"]["action"], task["humanized"]["input"]].join(' ')
+        end
         task
       end
     end
